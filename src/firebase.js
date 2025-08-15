@@ -1,11 +1,14 @@
 // src/firebase.js
 
 const admin = require('firebase-admin');
-const serviceAccount = require('./../geico-conpany-firebase-adminsdk-fbsvc-3291cdb1e2.json');
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  storageBucket: 'gs://geico-conpany.firebasestorage.app' 
+  credential: admin.credential.cert({
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+  }),
+  storageBucket: process.env.FIREBASE_DATABASE_URL
 });
 
 const db = admin.firestore();
