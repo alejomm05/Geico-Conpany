@@ -61,4 +61,4 @@ const bucket = admin.storage().bucket();
 // Comentado para evitar problemas en inicialización
 // db.listCollections().then(() => console.log('✅ Conexión a Firestore exitosa')).catch(err => console.error('❌ Error conexión Firestore:', err));
 
-module.exports = { db, bucket };
+module.exports = { admin,db, bucket };
